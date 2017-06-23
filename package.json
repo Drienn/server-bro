@@ -1,6 +1,6 @@
 {
   "name": "server-bro",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "",
   "main": "server-bro.js",
   "repository": {
@@ -17,5 +17,9 @@
   },
   "keywords": [],
   "author": "Emit Dutcher",
-  "license": "MIT"
+  "license": "MIT",
+  "preferGlobal": "true",
+  "bin": {
+    "server-bro": "server-bro.js"
+  }
 }
