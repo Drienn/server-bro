@@ -20,12 +20,12 @@ if (process.argv.length = 4 && process.argv[4] === 'bro') {
   //creates the public folder
   mkdirp('../new-project/public', function(err) {
     if (err) console.error(err)
-    else console.log('view folder created, bro!')
+    else console.log('public folder created, bro!')
   });
   //creates the routes folder
   mkdirp('../new-project/routes', function(err) {
     if (err) console.error(err)
-    else console.log('view folder created, bro!')
+    else console.log('routes folder created, bro!')
   });
 
   //creates the index.ejs file inside the views folder
@@ -42,7 +42,7 @@ if (process.argv.length = 4 && process.argv[4] === 'bro') {
   })
 
   //Creates the server.js file in the main project directory
-  fs.writeFile('./new-project/server.js', `var express = require('express');
+  fs.writeFile('../new-project/server.js', `var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
@@ -77,24 +77,16 @@ app.listen(port, function() {
   //creates the routes.js file inside the routes folder
   fs.writeFile('../new-project/routes/routes.js', `var express = require('express');
 var router = express.Router();
-var vehicles = require('../db/config').vehicles;
 
 
 const getter = address => (route, obj) => router.get(address, (req, res) => res.render(route, obj))
 
-const getterOne = address => (route, obj) => router.get(address, (req, res) => {
-  res.render(route, {
-    vehiclesList: vehicles.find({
-      id: parseInt(req.params.id)
-    })
-  })
-
-})
+const getterOne = address => (route, obj) => router.get(address, (req, res) => res.render(route, obj))
 
 
 
 getter('/')('index');
-getterOne('')('');
+getterOne('')('',{});
 
 
 module.exports = router;
@@ -104,7 +96,7 @@ module.exports = router;
   })
 
   //creates the style.css file inside the public folder
-  fs.writeFile('../new-project/public/style.css', 'Testing it out yo!', 'utf8', (err) => {
+  fs.writeFile('../new-project/public/style.css', '', 'utf8', (err) => {
     if (err) throw err;
     console.log(`your style.css is ready, bro!`)
   })
@@ -115,9 +107,6 @@ module.exports = router;
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \""Error: no test specified\"" && exit 1"
-  },
   "keywords": [],
   "author": "",
   "license": "MIT",
