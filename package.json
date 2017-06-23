@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server-bro.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Drienn/server-bro"
+  },
   "dependencies": {
     "fs-path": "^0.0.23",
     "mkdirp": "^0.5.1"
@@ -12,6 +16,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Emit Dutcher",
+  "license": "MIT"
 }

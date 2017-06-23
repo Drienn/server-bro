@@ -49,8 +49,6 @@ var path = require('path');
 var port = process.env.PORT || 8000;
 var getScripts = require('./routes/routes');
 
-
-
 var app = express();
 
 app.use(bodyParser.json());
@@ -62,9 +60,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use('/', getScripts);
-
-
-
 
 app.listen(port, function() {
   console.log('listening on: ', port);
@@ -78,16 +73,12 @@ app.listen(port, function() {
   fs.writeFile('../new-project/routes/routes.js', `var express = require('express');
 var router = express.Router();
 
-
 const getter = address => (route, obj) => router.get(address, (req, res) => res.render(route, obj))
 
 const getterOne = address => (route, obj) => router.get(address, (req, res) => res.render(route, obj))
 
-
-
 getter('/')('index');
 getterOne('')('',{});
-
 
 module.exports = router;
 `, 'utf8', (err) => {
@@ -115,6 +106,9 @@ module.exports = router;
     "cors": "^2.8.3",
     "ejs": "^2.5.6",
     "express": "^4.15.3"
+  },
+  "scripts": {
+    "postinstall": "exec"
   }
 }`, 'utf8', (err) => {
     if (err) throw err;
