@@ -14,7 +14,7 @@ Be sure to get all of the package.json dependencies by running the following cod
 `npm install`
 
 
-### How to use server-broC
+### How to use server-bro
 
 `node server-bro server me bro`
 
