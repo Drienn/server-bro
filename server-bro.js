@@ -6,29 +6,35 @@ const node = path.basename(process.argv[0]);
 const file = path.basename(process.argv[1]);
 
 if (process.argv.length = 4 && process.argv[4] === 'bro') {
+
+  //creates a new project directory
+  mkdirp('../new-project', function(err) {
+    if (err) console.error(err)
+    else console.log('project directory created, bro!')
+  });
   //creates the views folder
-  mkdirp('./views', function(err) {
+  mkdirp('../new-project/views', function(err) {
     if (err) console.error(err)
     else console.log('view folder created, bro!')
   });
   //creates the public folder
-  mkdirp('./public', function(err) {
+  mkdirp('../new-project/public', function(err) {
     if (err) console.error(err)
     else console.log('view folder created, bro!')
   });
   //creates the routes folder
-  mkdirp('./routes', function(err) {
+  mkdirp('../new-project/routes', function(err) {
     if (err) console.error(err)
     else console.log('view folder created, bro!')
   });
 
   //creates the index.ejs file inside the views folder
-  fs.writeFile('./views/index.ejs', 'Ready to go, bro!', 'utf8', (err) => {
+  fs.writeFile('../new-project/views/index.ejs', 'Ready to go, bro!', 'utf8', (err) => {
     if (err) throw err;
     console.log(`your index.ejs is ready bro!`)
   })
   //creates the error.ejs file inside the views folder
-  fs.writeFile('./views/error.ejs', `<h1><%= message %></h1>
+  fs.writeFile('../new-project/views/error.ejs', `<h1><%= message %></h1>
   <h2><%= error.status %></h2>
   <pre><%= error.stack %></pre>`, 'utf8', (err) => {
     if (err) throw err;
@@ -36,7 +42,7 @@ if (process.argv.length = 4 && process.argv[4] === 'bro') {
   })
 
   //Creates the server.js file in the main project directory
-  fs.writeFile('server.js', `var express = require('express');
+  fs.writeFile('./new-project/server.js', `var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
@@ -69,7 +75,7 @@ app.listen(port, function() {
   })
 
   //creates the routes.js file inside the routes folder
-  fs.writeFile('./routes/routes.js', `var express = require('express');
+  fs.writeFile('../new-project/routes/routes.js', `var express = require('express');
 var router = express.Router();
 var vehicles = require('../db/config').vehicles;
 
@@ -98,19 +104,19 @@ module.exports = router;
   })
 
   //creates the style.css file inside the public folder
-  fs.writeFile('./public/style.css', 'Testing it out yo!', 'utf8', (err) => {
+  fs.writeFile('../new-project/public/style.css', 'Testing it out yo!', 'utf8', (err) => {
     if (err) throw err;
     console.log(`your style.css is ready, bro!`)
   })
 
   //creates the package.json file in the main project directory
-  fs.writeFile('package.json', `{
+  fs.writeFile('../new-project/package.json', `{
   "name": "",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \""Error: no test specified\"" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -119,14 +125,14 @@ module.exports = router;
     "body-parser": "^1.17.2",
     "cors": "^2.8.3",
     "ejs": "^2.5.6",
-    "express": "^4.15.3",
+    "express": "^4.15.3"
   }
 }`, 'utf8', (err) => {
     if (err) throw err;
     console.log(`your index.ejs is ready bro!`)
   })
 
-  fs.writeFile('.gitignore', 'node_modules/', 'utf8', (err) => {
+  fs.writeFile('../new-project/.gitignore', 'node_modules/', 'utf8', (err) => {
     if (err) throw err;
     console.log(`your .gitignore is ready, bro!`)
   })
